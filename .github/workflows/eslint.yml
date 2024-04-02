@@ -39,9 +39,10 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npx eslint . >> outputs/test.txt 
+          npx eslint . 
           --config .eslintrc.js
           --ext .js
+          >> outputs/test.txt 
         continue-on-error: true
 
       - name: Upload ESLint results
