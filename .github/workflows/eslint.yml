@@ -38,7 +38,8 @@ jobs:
 
 
       - name: Run ESLint
-        run: mkdir -p /home/runner/work/Thea-stuff/Thea-stuff/lmao #|
+        run: |
+          mkdir mydirname
         #   
         #   npx eslint . >> /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt 
         #   pwd
