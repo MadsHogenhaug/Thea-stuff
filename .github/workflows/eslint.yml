@@ -38,8 +38,8 @@ jobs:
 
 
       - name: Run ESLint
-        run: pwd #|
-        #   mkdir -p /home/runner/work/Thea-stuff/Thea-stuff/outputs
+        run: mkdir -p /home/runner/work/Thea-stuff/Thea-stuff/lmao #|
+        #   
         #   npx eslint . >> /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt 
         #   pwd
         continue-on-error: true
