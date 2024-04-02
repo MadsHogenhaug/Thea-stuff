@@ -38,10 +38,10 @@ jobs:
 
 
       - name: Run ESLint
-        run: |
-          mkdir -p /home/runner/work/Thea-stuff/Thea-stuff/outputs
-          npx eslint . >> /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt 
-          pwd
+        run: pwd #|
+        #   mkdir -p /home/runner/work/Thea-stuff/Thea-stuff/outputs
+        #   npx eslint . >> /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt 
+        #   pwd
         continue-on-error: true
 
       - name: Upload ESLint results
