@@ -45,9 +45,9 @@ jobs:
           --output test.txt
         continue-on-error: false
 
-      - name: Upload ESLint results (optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: test.txt
-          path: outputs/test.txt
+      # - name: Upload ESLint results (optional)
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: test.txt
+      #     path: outputs/test.txt
 
