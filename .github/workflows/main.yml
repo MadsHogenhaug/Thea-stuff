@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - '**.js'  # Only run on javascript files
+      - '**.js' # Only run on JavaScript files
 
 jobs:
   lint:
@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]  # Update to your preferred Node.js versions
+        node-version: [14.x, 16.x, 18.x] # Update to your preferred Node.js versions
 
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        uses: eslint-action@v3
+        if: endsWith(github.event_path, '.js') # Check if file ends with .js
+        uses: eslint/actions@v3
         with:
           config-file: ./.eslintrc.json
