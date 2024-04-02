@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: eslint-results
-          path: eslint-results.txt
+          path: outputs/
