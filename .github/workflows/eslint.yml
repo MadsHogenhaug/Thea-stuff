@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      security-events: write
+      actions: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,14 +35,13 @@ jobs:
       - name: Install ESLint
         run: |
           npm install eslint@8.57.0
-          # npm install @microsoft/eslint-formatter-sarif@3.0.0
+
 
       - name: Run ESLint
         run: |
-          npx eslint .
+          npx eslint . >> outputs/test.txt 
           --config .eslintrc.js
           --ext .js
-          --output-file test.txt
         continue-on-error: true
 
       - name: Upload ESLint results
