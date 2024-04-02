@@ -2,14 +2,14 @@ name: Node.js ESLint Workflow
 
 on:
   push:
-    branches: [ "eslint-setup" ]
+    branches: [ "main" ]
     paths:
       - '**.js'  # Only run on javascript files
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/eslint-setup'
+    if: github.ref == 'refs/heads/main'
 
     strategy:
       matrix:
