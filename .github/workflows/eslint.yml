@@ -25,9 +25,7 @@ jobs:
     name: Run eslint scanning
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      security-events: write
-      actions: read
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -42,12 +40,12 @@ jobs:
           npx eslint .
           --config .eslintrc.js
           --ext .js
-          --output test.txt
-        continue-on-error: false
+          --output-file eslint-results.sarif
+        continue-on-error: true
 
-      # - name: Upload ESLint results (optional)
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: test.txt
-      #     path: outputs/test.txt
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
 
