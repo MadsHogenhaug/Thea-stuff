@@ -38,17 +38,9 @@ jobs:
 
 
       - name: Run ESLint
-        run: |
-          mkdir mydirname
-        #   
-        #   npx eslint . >> /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt 
-        #   pwd
-        continue-on-error: true
+        run: npx eslint . 
+          --config .eslintrc.js
 
-      - name: Upload ESLint results
-        
-        uses: actions/upload-artifact@v4
-        with:
-          name: my test
-          path: /home/runner/work/Thea-stuff/Thea-stuff/outputs/test.txt
+        continue-on-error: false
+
 
