@@ -1,0 +1,32 @@
+name: Node.js ESLint Workflow
+
+on:
+  push:
+    branches: [ "eslint-setup" ]
+    paths:
+      - '**.js'  # Only run on javascript files
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/eslint-setup'
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]  # Update to your preferred Node.js versions
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        uses: eslint/actions/eslint-action@v3
+        with:
+          config-file: ./.eslintrc.json
