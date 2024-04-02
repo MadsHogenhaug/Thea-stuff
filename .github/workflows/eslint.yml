@@ -42,28 +42,12 @@ jobs:
           npx eslint .
           --config .eslintrc.js
           --ext .js
-          --output eslint-results.txt
+          --output test.txt
         continue-on-error: true
 
       - name: Upload ESLint results (optional)
         uses: actions/upload-artifact@v3
         with:
-          name: eslint-results
-          path: outputs/
-  eslint-reporter:
-    runs-on: ubuntu-latest
-    name: Example ESLint Reporter Usage
-    steps:
-      - name: Get JSON
-        id: json
-        run: echo ::set-output name=sample::$(cat sample.json)
-      - name: Run ESLint Reporter Action (using JSON string)
-        uses: rahmanrafi/eslint-reporter-action@v1
-        with:
-          json: ${{ steps.json.outputs.sample }}
-          title: ESLint Report
-      - name: Run ESLint Reporter Action (using JSON file)
-        uses: rahmanrafi/eslint-reporter-action@v1
-        with:
-          json: ./sample.json
-          title: ESLint Report
+          name: test
+          path: outputs/test.txt
+
