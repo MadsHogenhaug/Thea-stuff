@@ -50,3 +50,20 @@ jobs:
         with:
           name: eslint-results
           path: outputs/
+  eslint-reporter:
+    runs-on: ubuntu-latest
+    name: Example ESLint Reporter Usage
+    steps:
+      - name: Get JSON
+        id: json
+        run: echo ::set-output name=sample::$(cat sample.json)
+      - name: Run ESLint Reporter Action (using JSON string)
+        uses: rahmanrafi/eslint-reporter-action@v1
+        with:
+          json: ${{ steps.json.outputs.sample }}
+          title: ESLint Report
+      - name: Run ESLint Reporter Action (using JSON file)
+        uses: rahmanrafi/eslint-reporter-action@v1
+        with:
+          json: ./sample.json
+          title: ESLint Report
