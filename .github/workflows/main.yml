@@ -27,6 +27,6 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        uses: eslint/actions/eslint-action@v3
+        uses: eslint-action@v3
         with:
           config-file: ./.eslintrc.json
