@@ -14,4 +14,4 @@ jobs:
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ./Dockerfile*  # Use a wildcard search
+          dockerfile: Dockerfile*  # Use a wildcard search
