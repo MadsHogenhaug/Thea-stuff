@@ -10,7 +10,6 @@ RUN npm install
 
 COPY . .
 
-
 # Exposing server port
 EXPOSE 5000
 
