@@ -2,16 +2,16 @@ FROM node:slim
 
 WORKDIR /express-docker
 
-ENV RUN_TYPE=dev
+ENV RUN_TYv
 
 COPY package.json ./
 
 RUN npm install
 
-COPY . .
+COPY 
 
 # Exposing server port
-EXPOSE 5000
+EXPE 5000
 
 # Running npm run start on port 5000
 CMD ["npm", "run", "start"]
