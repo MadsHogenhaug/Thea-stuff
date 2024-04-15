@@ -14,9 +14,9 @@ jobs:
       - name: Find Dockerfiles
         id: find_dockerfiles
         run: |
-          find . -type f -name 'Dockerfile*'  # Find all files starting with "Dockerfile"
-          # (Optional) Store results in a variable (if needed for other steps)
-          # dockerfiles=$(find . -type f -name 'Dockerfile*')
+          find . -type f -name 'Dockerfile*' | while read -r file; do
+            echo "$file"
+          done
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
