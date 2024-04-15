@@ -7,12 +7,15 @@ on:
 
 jobs:
   lint:
-    name: Lint Dockerfile
+    name: Lint Dockerfiles
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: hadolint/hadolint-action@v3.1.0
+      - name: Find Dockerfiles
+        id: find_dockerfiles
+        run: |
+          echo "::set-output name=dockerfiles::$(find . -type f -name 'Dockerfile*')"
+      - name: Lint Dockerfiles
+        uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: |
-            Dockerfile
-            Dockerfile.test
+          dockerfile: ${{ steps.find_dockerfiles.outputs.dockerfiles }}
