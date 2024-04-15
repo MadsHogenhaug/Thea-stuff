@@ -14,10 +14,8 @@ jobs:
       - name: Find Dockerfiles
         id: find_dockerfiles
         run: |
-          dockerfiles=$(find . -type f -name 'Dockerfile*')
-          echo "dockerfiles=$dockerfiles" >> $GITHUB_ENV  
+          echo "::set-output name=dockerfiles::$(find . -type f -name 'Dockerfile*')"
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ${{ env.dockerfiles }} 
-
+          dockerfile: ${{ steps.find_dockerfiles.outputs.dockerfiles }}
