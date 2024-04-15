@@ -14,8 +14,10 @@ jobs:
       - name: Find Dockerfiles
         id: find_dockerfiles
         run: |
-          echo "name=dockerfiles::$(find . -type f -name 'Dockerfile*')" >> $GITHUB_OUTPUT
+          find . -type f -name 'Dockerfile*'  # Find all files starting with "Dockerfile"
+          # (Optional) Store results in a variable (if needed for other steps)
+          # dockerfiles=$(find . -type f -name 'Dockerfile*')
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ${{ github.action_output }}
+          dockerfile: ${{ steps.find_dockerfiles.outputs }}  # Use output from previous step
