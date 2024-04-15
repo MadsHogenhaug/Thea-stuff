@@ -3,7 +3,7 @@ name: Dockerfile linting
 on:
   push:
     paths:
-      - 'Dockerfile'
+      - '**/Dockerfile*'
 
 jobs:
   lint:
@@ -12,5 +12,3 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: hadolint/hadolint-action@v3.1.0
-        with:
-          dockerfile: Dockerfile
