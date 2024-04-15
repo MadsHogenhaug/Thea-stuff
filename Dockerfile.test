@@ -1,17 +1,17 @@
 FROM node:slim
 
 WORKDIR /express-docker
-dwad
-ENV RUN_TYvada
-awdas
+
+ENV RUN_TYPE=dev
+
 COPY package.json ./
 
 RUN npm install
-dawdas
-COPY 
+
+COPY . .
 
 # Exposing server port
-EXPE 5000
+EXPOSE 5000
 
 # Running npm run start on port 5000
 CMD ["npm", "run", "start"]
