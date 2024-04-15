@@ -1,13 +1,13 @@
 FROM node:slim
 
 WORKDIR /express-docker
-
-ENV RUN_TYv
-
+dwad
+ENV RUN_TYvada
+awdas
 COPY package.json ./
 
 RUN npm install
-
+dawdas
 COPY 
 
 # Exposing server port
