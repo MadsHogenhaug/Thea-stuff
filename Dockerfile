@@ -6,6 +6,7 @@ ENV RUN_TYPE=dev
 
 COPY package.json ./
 
+
 RUN npm install
 
 COPY . .
