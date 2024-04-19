@@ -1,4 +1,3 @@
-
 name: Dockerfile linting
 
 on:
@@ -15,9 +14,12 @@ jobs:
       - name: Find Dockerfiles
         id: find_dockerfiles
         run: |
-          dockerfiles=$(find . -type f -name 'Dockerfile*')
-          echo "dockerfiles=$dockerfiles" >> $GITHUB_ENV  
+          dockerfiles=""
+          while IFS= read -r -d '' file; do
+            dockerfiles="$dockerfiles$file "
+          done < <(find . -type f -name 'Dockerfile*' -print0)
+          echo "dockerfiles=$dockerfiles" >> $GITHUB_ENV
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ${{ env.dockerfiles }} 
+          dockerfile: ${{ env.dockerfiles }}
