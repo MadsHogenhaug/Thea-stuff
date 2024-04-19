@@ -1,11 +1,10 @@
-FROM node:slim
+FROM node:latest
 
 WORKDIR /express-docker
 
 ENV RUN_TYPE=dev
 
 COPY package.json ./
-
 
 RUN npm install
 
