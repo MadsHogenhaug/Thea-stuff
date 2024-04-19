@@ -11,14 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Find Dockerfiles
-        id: find_dockerfiles
+      - name: Find and lint Dockerfiles
         run: |
-          dockerfiles=""
-          while IFS= read -r -d '' file; do
-            dockerfiles="$dockerfiles$file "
-          done < <(find . -type f -name 'Dockerfile*' -print0)
-          echo "dockerfiles=$dockerfiles" >> $GITHUB_ENV
+          find . -type f -name 'Dockerfile*' -print0 | while IFS= read -r -d '' file; do
+            hadolint "$file"
+          done
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
