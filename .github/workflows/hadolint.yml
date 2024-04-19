@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Find and lint Dockerfiles
-        run: |
-          find . -type f -name 'Dockerfile*' -print0 | while IFS= read -r -d '' file; do
-            hadolint "$file"
-          done
-      - name: Lint Dockerfiles
-        uses: hadolint/hadolint-action@v3.1.0
+      - uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ${{ env.dockerfiles }}
+          dockerfile: Dockerfile
